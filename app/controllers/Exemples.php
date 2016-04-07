@@ -1,5 +1,5 @@
 <?php
-echo"coucou";
+
 use micro\orm\DAO;
 use micro\js\Jquery;
 use micro\controllers\Controller;
