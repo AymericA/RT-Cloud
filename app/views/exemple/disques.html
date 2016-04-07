@@ -1,0 +1,10 @@
+<h1> Disques </h1>
+
+<ul>
+    <!-- Boucle en Twig, où l'on met "." au lieu de "->" pour allervoir ce qu'il y a dans une variable -->
+    {%for disque in disques %}
+        <li> <b>{{disque.getNom()}}</b>
+            <span class="label label-primary">{{disque.getUtilisateur()}}</span>
+        </li>
+    {%endfor%}
+</ul>

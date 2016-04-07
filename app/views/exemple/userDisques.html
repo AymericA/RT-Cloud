@@ -1,0 +1,8 @@
+<h3> {{user}} </h3>
+<div class="list-group">
+    {%for disque in user.getDisques()%}
+    <li class="list-group-item">
+        {{disque.getNom()}}
+    </li>
+    {%endfor%}
+</div>

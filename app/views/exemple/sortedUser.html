@@ -1,0 +1,17 @@
+<table class="table table-striped">
+    <thead>
+    <tr>
+        #Lien URL à mettre car href pas lien vers la vue !!!!!!!!!!!!
+        <th><a href="exemples/sorte_d_utilisateur/login/{%if(order=='asc')%}desc{%else%}asc{%endif%}">login</a></th>
+        <th>mail</th>
+    </tr>
+    </thead>
+    <tbody>
+    {%for user in users%}
+    <tr>
+        <td>{{user.getLogin()}}</td>
+        <td>{{user.getMail()}}</td>
+    </tr>
+    {%endfor%}
+    </tbody>
+</table>
