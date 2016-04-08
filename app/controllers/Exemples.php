@@ -32,7 +32,7 @@ class Exemples extends \BaseController
         echo "Hello " . $qui . $etAutre;
     }
 
-    public function utilisateur()
+    public function user()
     {
 
         $users = \micro\orm\DAO::getAll("Utilisateur");
@@ -46,14 +46,14 @@ class Exemples extends \BaseController
         $this->loadView("exemple/disques.html", array("disques" => $disques));
     }
 
-    public function sorte_d_utilisateur($field = "login", $order = "ASC")
+    public function sorte_d_user($field = "login", $order = "ASC")
     {
         #Dernière partie du getAll() correspond à la fin d'un requête SQL
         $users = \micro\orm\DAO::getAll("Utilisateur", "0=0 ORDER BY {$field} {$order}");
         $this->loadView("exemple/sortedUser.html", array("users" => $users, "field" => $field, "order" => $order));
     }
 
-    public function utilisateurDisques()
+    public function userDisques()
     {
         $users = \micro\orm\DAO::getAll("Utilisateur");
         foreach ($users as $user) {
