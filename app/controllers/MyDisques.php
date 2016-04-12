@@ -10,6 +10,9 @@ class MyDisques extends Controller{
 	}
 	public function index() {
 		echo Jquery::compile();
+		$utili= Auth::getUser();
+		echo "<h3> Mes disques -> $utili </h3>";
+		$this->loadView("disk/index_disk.html");
 	}
 
 	public function finalize(){
