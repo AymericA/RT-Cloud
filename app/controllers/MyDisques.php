@@ -2,6 +2,7 @@
 use micro\controllers\Controller;
 use micro\js\Jquery;
 use micro\utils\RequestUtils;
+
 class MyDisques extends Controller{
 	public function initialize(){
 		if(!RequestUtils::isAjax()){
@@ -11,8 +12,7 @@ class MyDisques extends Controller{
 	public function index() {
 		echo Jquery::compile();
 		$utili= Auth::getUser();
-		echo "<h3> Mes disques -> $utili </h3>";
-		$this->loadView("disk/index_disk.html");
+		$this->loadView("disk/index_disk.html",array("utili"=>$utili));
 	}
 
 	public function finalize(){
@@ -20,5 +20,5 @@ class MyDisques extends Controller{
 			$this->loadView("main/vFooter.html");
 		}
 	}
-
 }
+?>
