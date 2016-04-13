@@ -10,7 +10,7 @@ namespace micro\utils;
 class RequestUtils{
 	/**
 	 * Affecte membre à membre les valeurs du tableau associatif $values aux membres de l'objet $object
-	 * Utilisé par exemple pour récupérer les variables postées et les affecter aux membres d'un objet
+	 * Utilisé par MyDisques pour récupérer les variables postées et les affecter aux membres d'un objet
 	 * @param Class $object
 	 * @param associative array $values
 	 */
