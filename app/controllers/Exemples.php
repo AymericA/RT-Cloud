@@ -65,7 +65,7 @@ class Exemples extends \BaseController
 
     public function displayService($id = null)
     {
-        #Pour savoir si ID est affecté ou pas (se lit "is set"
+        #Pour savoir si ID est affecté ou pas (se lit "is set")
         if (isset($id)) {
             #Si ID appelle le service correspondant
             $service = \micro\orm\DAO::getOne("Service", $id);
