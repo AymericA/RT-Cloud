@@ -13,7 +13,7 @@ class MyDisques extends Controller{
 		echo Jquery::compile();
 		$utili=Auth::getUser();
 		
-			#$i= ModelUtils::getDisqueOccupation($GLOBALS["config"]["cloud"],["1".$utili]);
+		#$i= ModelUtils::getDisqueOccupation($GLOBALS["config"]["cloud"],["1".$utili]);
 
 		$this->loadView("MyDisques/index_disk.html",array("utili"=>$utili));
 
