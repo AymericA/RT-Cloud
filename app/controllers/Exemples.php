@@ -17,14 +17,7 @@ class Exemples extends \BaseController
 
     public function index()
     {
-        echo "<h1> Services </h1>";
-        $services = \micro\orm\DAO::getAll("Service");
 
-        #Pour chaque services dans $service faire.....
-        foreach ($services as $service) {
-            echo "<b>" . $service->getNom() . "</b> ";
-            echo $service->getPrix() . "<br>";
-        }
     }
 
     public function hello($qui = "world", $etAutre = "")
