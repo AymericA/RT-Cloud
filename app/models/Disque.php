@@ -19,12 +19,28 @@ class Disque extends Base{
 	 */
 	private $disqueTarifs;
 
+	/**
+	 * @ManyToMany(targetEntity="Service", inversedBy="disques")
+	 * @JoinTable(name="disque_service")
+	 */
+	private $services;
+
+
 	public function getId() {
 		return $this->id;
 	}
 
 	public function setId($id) {
 		$this->id=$id;
+		return $this;
+	}
+
+	public function getServices() {
+		return $this->services;
+ 	}
+
+	public function setServices($services) {
+		$this->services=$services;
 		return $this;
 	}
 
