@@ -15,13 +15,9 @@ class MyDisques extends Controller
 	public function index()
 	{
 		echo Jquery::compile();
-		$utili = Auth::getUser();
-		$disques = micro\orm\DAO::getOneToMany($utili, "disques");
-		#foreach ($disques as $disque) {
-			#$i=ModelUtils::getDisqueTarif($disques);
-
-		#}
-		$this->loadView("MyDisques/index_disk.html",array("utili"=>$utili,"disque"=>$disques));
+		$users = Auth::getUser();
+		$disque=micro\orm\DAO::getOneToMany($users, "disques");
+		$this->loadView("MyDisques/index_disk.html", array("users" => $users, "disque" => $disque));
 	}
 
 
