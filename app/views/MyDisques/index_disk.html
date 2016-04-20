@@ -6,9 +6,11 @@
             <a href="Disques/frm">Créer un disque</a>
         </button>
         <div>
+
+            <ul>
             {%for disque in users.getDisques()%}
             <li class="list-group-item">
-                <span class="glyphicon glyphicon-hdd"> <b>{{disque.getNom()}}</b></span>
+                <span class="glyphicon glyphicon-hdd"></span> <b>{{disque.getNom()}}</b>
                 <br>
                 <br>
                 <div class="progress">
@@ -17,6 +19,7 @@
                     </div>
                 </div>
             </li>
+            </ul>
 
             {%endfor%}
         </div>
