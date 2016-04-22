@@ -11,14 +11,26 @@ class MyDisques extends Controller
 			$this->loadView("main/vHeader.html", array("infoUser" => Auth::getInfoUser()));
 		}
 	}
-klkk
+
 	public function index()
 	{
 		echo Jquery::compile();
 		$users = Auth::getUser();
 		$disque=micro\orm\DAO::getOneToMany($users, "disques");
-		$this->loadView("MyDisques/index_disk.html", array("users" => $users, "disque" => $disque));
+		ModelUtils::sizeConverter("Mo");
+		$this->loadView("MyDisques/index_disk.html", array("users"=>$users, "disque"=>$disque));
 	}
+	/*public function index() {
+		echo Jquery::compile();
+		$user=Auth::getUser();
+		$disques=micro\orm\DAO::getOneToMany($user, "disques");
+		foreach($disques as $disque){
+			$occupation=$disque->getOccupation();
+			ModelUtils::sizeConverter("Go");
+			$this->loadview("MyDisques/index_disk.html",array("disque"=>$disque,"occu"=>$occupation));
+		}
+
+	}*/
 
 
 
