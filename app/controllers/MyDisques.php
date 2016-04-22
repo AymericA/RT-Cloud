@@ -11,7 +11,7 @@ class MyDisques extends Controller
 			$this->loadView("main/vHeader.html", array("infoUser" => Auth::getInfoUser()));
 		}
 	}
-
+klkk
 	public function index()
 	{
 		echo Jquery::compile();
