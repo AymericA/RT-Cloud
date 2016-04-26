@@ -20,6 +20,7 @@ class Disques extends \_DefaultController {
 	
 	protected function setValuesToObject(&$object) {
 		parent::setValuesToObject($object);
+		$object->setUtilisateur(Auth::getUser());
 	}
 
 }
