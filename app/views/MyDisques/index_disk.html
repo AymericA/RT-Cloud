@@ -11,6 +11,7 @@
             <li class="list-group-item">
                 <span class="glyphicon glyphicon-hdd"></span> <b>{{disque.getNom()}}</b>
                 {{disque.getSize()}}/{{disque.getQuota()}}
+                {{disque.getServices()}}
 
                 <br>
                 <br>
@@ -50,23 +51,8 @@
 
                 <a href="Scan/show/{{disque.getId()}}">
                     <button type="button" class="btn btn-block btn-primary">
-                        <form action="Scan/show/{{disque.getId()}}" method="POST">
-                            <i class="glyphicon glyphicon-folder-open" aria-hidden="true"></i>
-                            <input type="hidden" name="nom_disque" value="{{disque.getNom()}}" />
-                            <input type="hidden" name="taille" value="{{disque.getSize()}}" />
-                            <input type="hidden" name="occupation" value="{{disque.getOccupation()}}" />
-                            <input type="hidden" name="quota" value="{{disque.getQuota()}}" />
-                            <input type="hidden" name="tarif" value="{{disque.getTarif()}}" />
-                            <input type="submit" class='style' name="Ouvrir" value="Ouvrir" />
-                        </form>
-                        <style type="text/css">
-                            .style {
-                                width: 100%;
-                                background-color: transparent;
-                                border: none;
-
-                            }
-                        </style>
+                        <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
+                        Ouvrir
                     </button>
                 </a>
             </li>

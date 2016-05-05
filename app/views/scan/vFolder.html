@@ -1,5 +1,4 @@
 <div class="filemanager">
-	<div class="breadcrumbs"></div>
 	<ul class="nav nav-tabs" id="tabsMenu">
 		<li role="presentation" class="active"><a href="#Home" aria-controls="Home" role="tab" data-toggle="tab">Home</a></li>
 		<li role="presentation"><a href="#Listing" aria-controls="Listing" role="tab" data-toggle="tab">Listing</a></li>
@@ -9,10 +8,17 @@
 		<div role="tabpanel" class="tab-pane active" id="Home">
 			<div class="list-group">
 
-				<li class="list-group-item">
+				<li class="list-group-item" id="li">
 					<!-- Caractéristique du disque. -->
 					Caractéristique du disque
 				</li>
+
+				<style>
+					#li{
+						color: grey;
+						background-color: whitesmoke;
+					}
+				</style>
 
 				<li class="list-group-item">
 					<!-- Nom du disque. -->
@@ -51,7 +57,30 @@
 
 					{% endif %}
 				</li>
+				<li class="list-group-item">
+					<!-- Tarification -->
 
+					<h4><b>Tarification</b></h4>
+
+					{% if tarif.getPrix()==0 %}
+					Prix de 0€ avec une marge de dépassement de 2% pour un coût de dépassement de 0€.
+
+					{% else %}
+					Prix de 5€ avec une marge de dépassement de 2% pour un coût de dépassement de 0.01€.
+
+					<!--Modifier la Tarification !!!!-->
+					{% endif %}
+				</li>
+
+				<li class="list-group-item">
+					<!-- Services -->
+
+					<b>Services :</b>
+					</br>
+					{% for services in disque.getServices() %}
+					<span class="label label-info">{{services.getNom()}}</span>
+					{% endfor %}
+				</li>
 
 				</ul>
 			</div>

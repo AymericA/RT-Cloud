@@ -17,17 +17,18 @@ class Scan extends BaseController {
 	 * @param int $idDisque
 	 */
 	public function show($idDisque) {
-		$users=Auth::getUser();
-		$user=$users->getLogin();
-		$diskName=$_POST["nom_disque"];
-		$size=$_POST["taille"];
-		$occupation=$_POST["occupation"];
-		$quota=$_POST["quota"];
-		$tarif=$_POST["tarif"];
-		/*$service=Service::getDescription();*/
+		$disque=micro\orm\DAO::getOne("Disque",$idDisque);
+		$user=$disque->getUtilisateur()->getLogin();
+		$diskName=$disque->getNom();
+		$size=$disque->getSize();
+		$occupation=$disque->getOccupation();
+		$quota=$disque->getQuota();
+		$tarif=$disque->getTarif();
+		$services=micro\orm\DAO::getOneToMany($disque, "services");
 
-		$this->loadView("scan/vFolder.html", array("user"=>$user, "nom_disque"=>$diskName, "taille"=>$size,
-			"occupation"=>$occupation, "quota"=>$quota, "tarif"=>$tarif/*, "service"=>$service*/));
+
+		$this->loadView("scan/vFolder.html", array("idDisque"=>$idDisque, "user"=>$user, "nom_disque"=>$diskName, "taille"=>$size,
+			"occupation"=>$occupation, "quota"=>$quota, "tarif"=>$tarif, "services"=>$services));
 
 		Jquery::executeOn("#ckSelectAll", "click","$('.toDelete').prop('checked', $(this).prop('checked'));$('#btDelete').toggle($('.toDelete:checked').length>0)");
 		Jquery::executeOn("#btUpload", "click", "$('#tabsMenu a:last').tab('show');");
