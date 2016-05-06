@@ -20,7 +20,7 @@ class Scan extends BaseController {
 
 		$disque=micro\orm\DAO::getOne("Disque",$idDisque);
 		$services=micro\orm\DAO::getOne("Service",$idDisque);
-		$service=$services->getNom();
+
 
 		$user=$disque->getUtilisateur()->getLogin();
 		$diskName=$disque->getNom();
