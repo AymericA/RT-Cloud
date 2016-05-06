@@ -19,7 +19,7 @@ class MyDisques extends Controller
 		if (Auth::isAuth()==True) {
 			$users = Auth::getUser();
 			$disque = micro\orm\DAO::getOneToMany($users, "disques");
-			$this->loadView("MyDisques/index_disk.html", array("users"=>$users, "disque"=>$disque));
+			$this->loadView("MyDisques/index_disk.html", array("users"=>$users));
 		}
 		else{
 			echo "Vous devez vous connecter.";

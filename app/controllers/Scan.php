@@ -17,15 +17,17 @@ class Scan extends BaseController {
 	 * @param int $idDisque
 	 */
 	public function show($idDisque) {
+
 		$disque=micro\orm\DAO::getOne("Disque",$idDisque);
+		$services=micro\orm\DAO::getOne("Service",$idDisque);
+		$service=$services->getNom();
+
 		$user=$disque->getUtilisateur()->getLogin();
 		$diskName=$disque->getNom();
-		$size=$disque->getSize();
+		$size=DirectoryUtils::formatBytes($disque->getSize());
 		$occupation=$disque->getOccupation();
-		$quota=$disque->getQuota();
+		$quota=DirectoryUtils::formatBytes($disque->getQuota());
 		$tarif=$disque->getTarif();
-		$services=micro\orm\DAO::getOneToMany($disque, "services");
-
 
 		$this->loadView("scan/vFolder.html", array("idDisque"=>$idDisque, "user"=>$user, "nom_disque"=>$diskName, "taille"=>$size,
 			"occupation"=>$occupation, "quota"=>$quota, "tarif"=>$tarif, "services"=>$services));
