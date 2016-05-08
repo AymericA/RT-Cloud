@@ -19,7 +19,7 @@ class Scan extends BaseController {
 	public function show($idDisque) {
 
 		$disque=micro\orm\DAO::getOne("Disque",$idDisque);
-		$services=micro\orm\DAO::getOne("Service",$idDisque);
+		$services=micro\orm\DAO::getManyToMany($disque,"services");
 
 
 		$user=$disque->getUtilisateur()->getLogin();

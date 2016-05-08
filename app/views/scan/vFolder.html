@@ -25,7 +25,16 @@
 					<!-- Nom du disque. -->
 					<b>Nom : </b> {{nom_disque}}
 					<!--Mettre lien pour changer le nom du disque.-->
-
+					<a href="Disques/frm/{{idDisque}}">
+						<button type="button" class="btn btn-default">
+							<span class="glyphicon glyphicon-edit" id="modif"></span> Modifier...
+							<style>
+								#modif{
+									color: #000000;
+								}
+							</style>
+						</button>
+					</a>
 				</li>
 
 				<li class="list-group-item">
@@ -69,8 +78,18 @@
 					{% else %}
 					Prix de 5€ avec une marge de dépassement de 2% pour un coût de dépassement de 0.01€.
 
-					<!--Modifier la Tarification !!!!-->
 					{% endif %}
+
+					<br>
+
+					<!--Modifier la Tarification !!!!-->
+
+					<a href="Disques/frm/{{idDisque}}">
+						<button type="button" class="btn btn-default">
+							<span class="glyphicon glyphicon-edit" id="modif"></span>
+							Modifier la tarification...
+						</button>
+					</a>
 				</li>
 
 				<li class="list-group-item">
@@ -78,8 +97,9 @@
 
 					<b>Services :</b>
 					</br>
-
-					<span class="label label-info">{{services.getNom()}}</span>
+					{% for service in services %}
+					<span class="label label-info">{{service.getNom()}}</span>
+					{% endfor %}
 
 				</li>
 
