@@ -1,9 +1,9 @@
-# RT-Cloud
+RT-Cloud
 
-M2105-2016 project
-#Howto
+TODO 1.1 -> Aymeric
 
-- [x] fork your own copy of this repository.
-- [x] Clone the project on your local machine.
-- [x] read the project specifications : [Cloud specifications](http://slamwi.kobject.net/php-rt/projets/projet-2016).
-- [x] do some regular commits and pushs 
+TODO 1.2 :
+Vue html -> Anaëlle
+Récupération des données -> Aymeric
+
+TODO 1.3 -> Anaëlle
