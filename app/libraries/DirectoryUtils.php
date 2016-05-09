@@ -71,7 +71,7 @@ class DirectoryUtils {
 	 * @return Historique
 	 */
 	public static function updateDaySize($cloud,$disque){
-		$size=DirectoryUtils::scanForSize($cloud["root"].$cloud["prefix"].$disque->getUtilisateur()->getLogin()."/".$disque->getNom());
+		$size=DirectoryUtils::scanForSize('files/'.'srv-'.$disque->getUtilisateur()->getLogin()."/".$disque->getNom());
 		$histo=DAO::getAll("Historique","idDisque=".$disque->getId()." AND DATE(`date`) = CURDATE() ORDER BY `date` DESC",false);
 
 		if(sizeof($histo)>0){

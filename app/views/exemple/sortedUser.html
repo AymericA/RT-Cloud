@@ -1,17 +1,31 @@
 <table class="table table-striped">
     <thead>
     <tr>
-        <!-- Lien URL à mettre car href pas lien vers la vue !!!!!!!!!!!! -->
-        <th><a href="exemples/sorte_d_user/login/{%if(order=='asc')%}desc{%else%}asc{%endif%}">login</a></th>
-        <th>mail</th>
+        <th>Utilisateur</th>
+        <th>Disque</th>
+        <th>Montant</th>
+        <th></th>
     </tr>
     </thead>
     <tbody>
-    {%for user in users%}
+
     <tr>
-        <td>{{user.getLogin()}}</td>
-        <td>{{user.getMail()}}</td>
+        <td>{{login}}</td>
+
+        <td>
+            <span class="label label-default">{{nbdisque}}</span>
+        </td>
+
+        <td>
+            <span class="label label-info">coucou</span>
+        </td>
+
+        <td style="text-align: right">
+            <button type="button" class="btn btn-default" style="background-color: #000000">
+                <span class="glyphicon glyphicon-search" style="color: #ffffff" aria-hidden="true"></span>
+                <a href="#" style="color: #ffffff">Ouvrir</a>
+            </button>
+        </td>
     </tr>
-    {%endfor%}
     </tbody>
 </table>

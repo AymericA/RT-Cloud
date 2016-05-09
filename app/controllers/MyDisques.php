@@ -15,10 +15,24 @@ class MyDisques extends Controller
 	public function index()
 	{
 		echo Jquery::compile();
-		$users = Auth::getUser();
-		$disque=micro\orm\DAO::getOneToMany($users, "disques");
-		ModelUtils::sizeConverter("Mo");
-		$this->loadView("MyDisques/index_disk.html", array("users"=>$users, "disque"=>$disque));
+
+		if (Auth::isAuth()==True) {
+			$users = Auth::getUser();
+			$disques = micro\orm\DAO::getOneToMany($users, "disques");
+			$this->loadView("MyDisques/index_disk.html", array("users"=>$users));
+			foreach($disques as $disque) {
+				$nom = $disque->getNom();
+				$size = DirectoryUtils::formatBytes($disque->getSize());
+				$quota = DirectoryUtils::formatBytes($disque->getQuota());
+				$occupation = $disque->getOccupation();
+				$id = $disque->getId();
+				$this->loadView("MyDisques/disque.html",array("nom"=>$nom, "size"=>$size, "quota"=>$quota, "occupation"=>$occupation,
+								"id"=>$id));
+			}
+		}
+		else{
+			echo "Vous devez vous connecter.";
+		}
 	}
 
 

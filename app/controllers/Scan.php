@@ -17,8 +17,21 @@ class Scan extends BaseController {
 	 * @param int $idDisque
 	 */
 	public function show($idDisque) {
-		$diskName="Datas";
-		$this->loadView("scan/vFolder.html");
+
+		$disque=micro\orm\DAO::getOne("Disque",$idDisque);
+		$services=micro\orm\DAO::getManyToMany($disque,"services");
+
+
+		$user=$disque->getUtilisateur()->getLogin();
+		$diskName=$disque->getNom();
+		$size=DirectoryUtils::formatBytes($disque->getSize());
+		$occupation=$disque->getOccupation();
+		$quota=DirectoryUtils::formatBytes($disque->getQuota());
+		$tarif=$disque->getTarif();
+
+		$this->loadView("scan/vFolder.html", array("idDisque"=>$idDisque, "user"=>$user, "nom_disque"=>$diskName, "taille"=>$size,
+			"occupation"=>$occupation, "quota"=>$quota, "tarif"=>$tarif, "services"=>$services));
+
 		Jquery::executeOn("#ckSelectAll", "click","$('.toDelete').prop('checked', $(this).prop('checked'));$('#btDelete').toggle($('.toDelete:checked').length>0)");
 		Jquery::executeOn("#btUpload", "click", "$('#tabsMenu a:last').tab('show');");
 		Jquery::doJqueryOn("#btDelete", "click", "#panelConfirmDelete", "show");
