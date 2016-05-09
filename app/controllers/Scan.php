@@ -27,6 +27,8 @@ class Scan extends BaseController {
 		Jquery::postFormOn("click", "#btCreateFolder", "Scan/createFolder", "frmCreateFolder","#ajaxResponse");
 		Jquery::execute("window.location.hash='';scan('".$diskName."')",true);
 		echo Jquery::compile();
+		
+		
 	}
 
 	public function files($dir="Datas"){
