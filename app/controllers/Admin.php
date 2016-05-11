@@ -74,6 +74,6 @@ class Admin extends \BaseController {
 				$disk->tarif = ModelUtils::getDisqueTarif($disk);
 			$i++;
 		}
-		$this->loadView('Admin/disque.html', ['users' => $users]);
+		$this->loadView('Admin/disque.html', array('users' => $users));
 	}
 }

@@ -35,11 +35,6 @@ class MyDisques extends Controller
 		}
 	}
 
-
-
-
-
-
 	public function finalize(){
 		if(!RequestUtils::isAjax()){
 			$this->loadView("main/vFooter.html");

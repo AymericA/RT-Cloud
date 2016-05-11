@@ -12,25 +12,25 @@
                     {{disk.nom}}
                 </div>
                 <div class="col-md-3">
-                    {{disk.tarif}}
+                    {{disk.tarif.getQuota()}} {{disk.tarif.getUnite()}} pour {{disk.tarif.getPrix()}}€ avec marge de dépassement de
+                    {{disk.tarif.getMargeDepassement() * 100}}% (Coût de dépassement {{disk.tarif.getCoutDepassement()}}€ / {{disk.tarif.getUnite()}})
                 </div>
                 <div class="col-md-3">
                     <div class="progress">
-                        <div
-                                class="progress-bar progress-bar-info progress-bar-striped"
+                        <div    class="progress-bar progress-bar-info progress-bar-striped active"
                                 role="progressbar"
                                 aria-valuenow="{{disk.getOccupation()}}"
                                 aria-valuemin="0"
                                 aria-valuemax="100"
                                 {% if disk.getOccupation() != 0 %}
                                 style="width: {{disk.getOccupation()}}%; min-width: 3em;"
-                                {% endif %}
-                        >
+                                {% endif %}>
                             {{disk.getOccupation()}}%
                         </div>
                     </div>
                 </div>
                 <div class="col-md-2">
+                    <a href="Scan/show/{{disk.getId()}}">
                     <button class="btn btn-primary">
                         <span class="glyphicon glyphicon-search"></span>
                         Ouvrir

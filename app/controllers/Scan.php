@@ -29,16 +29,6 @@ class Scan extends BaseController
 			$tarif = ModelUtils::getDisqueTarif($disque);
 
 
-
-			if(empty($disque)) {
-				$msg = new DisplayedMessage();
-				$msg->setContent("Le disque n'existe pas ou ne vous appartient pas !")
-					->setType("warning")
-					->setDismissable(true)
-					->show($this);
-				return false;
-			}
-
 			$users = $disque->getUtilisateur()->getLogin();
 			$diskName = $disque->getNom();
 			$size = DirectoryUtils::formatBytes($disque->getSize());

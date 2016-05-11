@@ -1,15 +1,17 @@
 <form method="post" action="Disques/update">
     <fieldset>
         <legend>Ajouter/modifier un disque </legend>
-        <div class="alert alert-info">Disque :</div>
+        <div class="alert alert-info">Disque et choix du tarif :</div>
         <div class="form-group">
 
             <input type="hidden" name="id" value="{{disque.getId()}}">
-            <input type="text" name="nom" id="nom" value="{{disque.getNom()}}" placeholder="Entrez le Nom" class="form-control" {{disabled}}>
-            <input type="text" name="Date" value="{{disque.getCreatedAt()}}" placeholder="Entrez une Date" class="form-control" {{disabled}}>
+            <input type="text" name="nom" id="nom" value="{{disque.getNom()}}"
+                   placeholder="Entrez le Nom" class="form-control" {{disabled}}>
+            <input type="datetime-local" name="Date" value="{{disque.getCreatedAt()}}"
+                   placeholder="Entrez une Date" class="form-control" {{disabled}}>
 
-            <form method="post" action="Scan/changetarif">
-            <label for="tarif">Choix du tarif</label>
+            <br>
+
             <select name="tarif" id="tarif" class="form-control">
                 {% for tarif in tarifs %}
                 <option value="{{tarif.id}}">
@@ -18,7 +20,7 @@
                 </option>
                 {% endfor %}
             </select>
-            </form>
+
         </div>
 
         <div class="form-group">
