@@ -28,13 +28,7 @@ class Scan extends BaseController
 			$services = micro\orm\DAO::getManyToMany($disque, "services");
 			$tarif = ModelUtils::getDisqueTarif($disque);
 
-			if($option) {
 
-				$tarifs = micro\orm\DAO::getAll("tarif");
-				$selected = $disque->getTarif()->getId();
-				$this->loadView("scan/tarifs.html", array("disque" => $disque, "user" => $user,
-					"tarifs" => $tarifs, "selected" => $selected));
-			}
 
 			if(empty($disque)) {
 				$msg = new DisplayedMessage();
@@ -72,25 +66,6 @@ class Scan extends BaseController
 				->setDismissable(false)
 				->show($this);
 			echo Auth::getInfoUser();
-		}
-	}
-
-	public function changeTarif() {
-		$valid_input = ['disqueId', 'userId', 'tarif'];
-
-		$disque = micro\orm\DAO::getOne('disque', 'id = '. $_GET['disqueId']);
-		$disqueTarif = micro\orm\DAO::getOne('disquetarif', 'idDisque = '. $_GET['disqueId']);
-
-		$size=var_dump($disque->getSize());
-		ModelUtils::sizeConverter($size);
-		$tarif = micro\orm\DAO::getOne('tarif', 'id = '. $_GET['tarif']);
-		$i=$disqueTarif->setTarif($tarif);
-		$u=micro\orm\DAO::update($i);
-		if ($u) {
-			header('Location: /RT-Cloud/Scan/show/' . $_GET['disqueId']);
-			return false;
-		} else {
-			echo '<div class="alert alert-danger">Une erreur est survenue, veuillez rééssayer ultérieurement</div>';
 		}
 	}
 

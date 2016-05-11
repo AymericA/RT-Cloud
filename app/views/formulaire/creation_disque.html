@@ -1,26 +1,29 @@
 <form method="post" action="Disques/update">
     <fieldset>
-        <legend>Ajouter/modifier un disque</legend>
-        <div class="alert alert-info">Disque : {{disque.toString()}}</div>
+        <legend>Ajouter/modifier un disque </legend>
+        <div class="alert alert-info">Disque :</div>
         <div class="form-group">
 
-            <!-- Id du disque -->
             <input type="hidden" name="id" value="{{disque.getId()}}">
+            <input type="text" name="nom" id="nom" value="{{disque.getNom()}}" placeholder="Entrez le Nom" class="form-control" {{disabled}}>
+            <input type="text" name="Date" value="{{disque.getCreatedAt()}}" placeholder="Entrez une Date" class="form-control" {{disabled}}>
 
-            <!-- Utilisateur -->
-            <input type="hidden" name="idUser" value="{{iduser}}" class="form-control" {{disabled}}>
+            <form method="post" action="Scan/changetarif">
+            <label for="tarif">Choix du tarif</label>
+            <select name="tarif" id="tarif" class="form-control">
+                {% for tarif in tarifs %}
+                <option value="{{tarif.id}}">
+                    {{tarif.getQuota()}} {{tarif.getUnite()}} pour {{tarif.getPrix()}}€ avec marge de dépassement de
+                    {{tarif.getMargeDepassement() * 100}}% (Coût de dépassement {{tarif.getCoutDepassement()}}€ / {{tarif.getUnite()}})
+                </option>
+                {% endfor %}
+            </select>
+            </form>
+        </div>
 
-            <!-- Nom du disque -->
-            <input type="text" name="nom" value="{{disque.getNom()}}" placeholder="Entrer le nom du Disque" class="form-control" {{disabled}}>
-
-            <!-- Créé le :-->
-            <input type="text" name="createdat" value="{{disque.getCreatedAt()}}" class="form-control" {{disabled}}>
-
-            <br>
-            <br>
-
+        <div class="form-group">
             <input type="submit" value="Valider" class="btn btn-default">
-            <a class="btn btn-default" href="{{config['siteUrl']}}Disques">Annuler</a>
+            <a class="btn btn-default" href="{{config['siteUrl']}}disques">Annuler</a>
         </div>
     </fieldset>
 </form>
