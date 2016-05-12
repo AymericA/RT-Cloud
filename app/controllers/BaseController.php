@@ -9,8 +9,16 @@ use micro\utils\RequestUtils;
  */
 abstract class BaseController extends Controller {
 	public function initialize(){
+		/**
+		 * fais quelque chose mais ne l'affiche pas
+		 */
+		$crumbs = explode("/",$_SERVER["QUERY_STRING"]);
+		foreach($crumbs as $crumb) {
+			$g= ucwords(str_replace(array("c", "="), array("", ""), $crumb) . ' ');
+			$i[]="$g";
+		}
 		if(!RequestUtils::isAjax()){
-			$this->loadView("main/vHeader.html",array("infoUser"=>Auth::getInfoUser()));
+			$this->loadView("main/vHeader.html",array("infoUser"=>Auth::getInfoUser(),"i"=>$i));
 		}
 	}
 

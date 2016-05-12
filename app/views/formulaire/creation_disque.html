@@ -5,9 +5,11 @@
         <div class="form-group">
 
             <input type="hidden" name="id" value="{{disque.getId()}}">
+
             <input type="text" name="nom" id="nom" value="{{disque.getNom()}}"
                    placeholder="Entrez le Nom" class="form-control" {{disabled}}>
-            <input type="datetime-local" name="Date" value="{{disque.getCreatedAt()}}"
+
+            <input type="hidden" name="Date" value="{{disque.getCreatedAt()}}"
                    placeholder="Entrez une Date" class="form-control" {{disabled}}>
 
             <br>
@@ -29,3 +31,7 @@
         </div>
     </fieldset>
 </form>
+
+<!-- s'affiche en bas du formulaire -->
+
+{{i[1]}}

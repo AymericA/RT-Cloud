@@ -1,17 +1,28 @@
 <?php
-class Disques extends \_DefaultController {
-	public function __construct(){
+class Disques extends \_DefaultController
+{
+	public function __construct()
+	{
 		parent::__construct();
-		$this->title="Disques";
-		$this->model="Disque";
+		$this->title = "Disques";
+		$this->model = "Disque";
+
 	}
+
 	public function frm($id=NULL)
 	{
 		$disque = $this->getInstance($id);
 		$tarifs = micro\orm\DAO::getAll("tarif");
 
 		$disabled = "";
-		$this->loadView("formulaire/creation_disque.html", array("disque" => $disque, "disabled" => $disabled, "tarifs"=>$tarifs));
+		$crumbs = explode("/",$_SERVER["QUERY_STRING"]);
+		foreach($crumbs as $crumb) {
+			$g = ucwords(str_replace(array("c", "="), array("", ""), $crumb) . ' ');
+			$i[] = "$g";
+		}
+
+		$this->loadView("formulaire/creation_disque.html", array("disque" => $disque, "disabled" => $disabled,
+			"tarifs"=>$tarifs, "i"=>$i));
 	}
 
 	public function update(){
@@ -50,10 +61,10 @@ class Disques extends \_DefaultController {
 	/* (non-PHPdoc)
 	 * @see _DefaultController::setValuesToObject()
 	 */
+
 	protected function setValuesToObject(&$object) {
 		parent::setValuesToObject($object);
 		$object->setUtilisateur(Auth::getUser());
 	}
 }
-
-
+?>
