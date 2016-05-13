@@ -25,3 +25,7 @@ Pour faire notre projet, nous avons utilisé :
     - GitHub, pour partager nos informations et notre code
     - PhpStorm, pour écrire notre code, synchronisé grâce à GitHub
 
+Pour créer le code de notre projet, nous avons collaboré avec d'autre groupe en plus de nos propre cervelles (bien évidemment) :
+- JORET Gaëtan et COULOIGNER Axel -> nous nous sommes entraidé principalement pour le TODO 1
+- GUILLEMETTE Florent nous avons avec lui par exemple corrigé un petit problème avec la fonction DirectoryUtils::formatBytes
+- ERNAULT Pierre nous as aidé pour nous permettre de changer le chemin du disque lorsque nous le renommons

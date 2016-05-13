@@ -6,27 +6,23 @@ class Disques extends \_DefaultController
 		parent::__construct();
 		$this->title = "Disques";
 		$this->model = "Disque";
-
 	}
+
 
 	public function frm($id=NULL)
 	{
 		$disque = $this->getInstance($id);
 		$tarifs = micro\orm\DAO::getAll("tarif");
-
 		$disabled = "";
 		$crumbs = explode("/",$_SERVER["QUERY_STRING"]);
 		foreach($crumbs as $crumb) {
 			$g = ucwords(str_replace(array("c", "="), array("", ""), $crumb) . ' ');
 			$i[] = "$g";
 		}
-
 		$this->loadView("formulaire/creation_disque.html", array("disque" => $disque, "disabled" => $disabled,
 			"tarifs"=>$tarifs, "i"=>$i));
 	}
-
 	public function update(){
-
 		// Si un ID et un nom sont passés en paramètres, il s'agit de mettre à jour un disque
 		if($_POST["id"] && $_POST['nom']) {
 			// On recupère le chemin du dossier du disque grâce à l'ancien nom du disque et aux variables globales
@@ -57,14 +53,13 @@ class Disques extends \_DefaultController
 		// On appelle ensuite la fonction update du DefaultController pour mettre à jour les paramètres en base de données.
 		parent::update();
 	}
-
 	/* (non-PHPdoc)
 	 * @see _DefaultController::setValuesToObject()
 	 */
-
 	protected function setValuesToObject(&$object) {
 		parent::setValuesToObject($object);
 		$object->setUtilisateur(Auth::getUser());
+		$object->setDisqueTarifs($object->getTarif());
 	}
 }
 ?>
